@@ -36,13 +36,22 @@
             color: #7289DA;
             margin-top: 20px;
         }
-        a {
-            color: #7289DA;
+        .btn {
+            display: inline-block;
+            background-color: #7289DA;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
-        a:hover {
-            text-decoration: underline;
+        .btn:hover {
+            background-color: #5a6ebd;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
         }
         @media (max-width: 600px) {
             h1 {
@@ -54,12 +63,17 @@
             .author {
                 font-size: 1.4rem;
             }
+            .btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Click <a href="https://discord.gg/M8XRQhFN">here</a> to join the Discord server.</h1>
+        <h1>Join our Discord server</h1>
+        <a href="https://discord.gg/M8XRQhFN" class="btn">Join Discord Server</a>
         <div class="message">
             WE WILL MAKE IMPORTANTE LINKS HERE AND NEWS
             and send this page to all members with out mobadra execute us 
@@ -67,7 +81,6 @@
         <div class="author">From Asaad_ZX</div>
         <div class="message">
             HI master did you like the page?
-            
         </div>
     </div>
 </body>

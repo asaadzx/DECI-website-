@@ -1,15 +1,26 @@
 {
-  "name": "deci-website-",
-  "module": "index.ts",
+  "name": "vite-template-solid",
+  "version": "0.0.0",
+  "description": "",
   "type": "module",
-  "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
-  "peerDependencies": {
-    "typescript": "^5"
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.5",
+    "@tailwindcss/vite": "^4.0.7",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.5",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0",
+    "vite-plugin-solid": "^2.11.6"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.5.0"
+    "animejs": "^3.2.1",
+    "solid-js": "^1.9.5"
   }
 }

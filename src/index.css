@@ -1,0 +1,14 @@
+/* Google Fonts are imported in index.html */
+@import 'tailwindcss';
+
+/* Add some global styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Tagesschrift', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Tagesschrift', cursive;
+}

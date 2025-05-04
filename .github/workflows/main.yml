@@ -1,0 +1,48 @@
+name: Deploy Production
+
+on:
+  push:
+    branches: [ "main" ] # Trigger only on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production # Mark this job as deploying to the production environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest # Or specify your preferred production version
+
+      - name: Install production dependencies
+        run: bun install --production
+
+      - name: Build application for production # Ensure production-specific build
+        run: bun run build:prod # Example: assumes a "build:prod" script in package.json
+
+      - name: Deploy to production server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.PROD_DEPLOY_HOST }}
+          username: ${{ secrets.PROD_DEPLOY_USER }}
+          key: ${{ secrets.PROD_DEPLOY_PRIVATE_KEY }}
+          port: ${{ secrets.PROD_DEPLOY_PORT }}
+          source: ./dist # Assuming your production build outputs to a 'dist' folder
+          target: ${{ secrets.PROD_DEPLOY_PATH }}
+
+      - name: Execute remote production commands # Restart production service, etc.
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_DEPLOY_HOST }}
+          username: ${{ secrets.PROD_DEPLOY_USER }}
+          key: ${{ secrets.PROD_DEPLOY_PRIVATE_KEY }}
+          port: ${{ secrets.PROD_DEPLOY_PORT }}
+          script: |
+            cd ${{ secrets.PROD_DEPLOY_PATH }}
+            # Example: npm install --production # If not done in CI
+            # Example: pm2 restart my-production-app
+            # Example: systemctl restart my-production-service
